@@ -1,10 +1,13 @@
 package com.ticketing.service.impl;
 
 import com.ticketing.dto.TaskDTO;
+import com.ticketing.enums.Status;
 import com.ticketing.service.TaskService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class TaskServiceImpl extends AbstractMapService<TaskDTO,Long> implements TaskService {
@@ -12,6 +15,18 @@ public class TaskServiceImpl extends AbstractMapService<TaskDTO,Long> implements
 
     @Override
     public TaskDTO save(TaskDTO task) {
+
+        if(task.getTaskStatus()==null){
+            task.setTaskStatus(Status.OPEN);
+
+        }
+        if(task.getAssignedDate()==null){
+            task.setAssignedDate(LocalDate.now());
+
+        }
+        if(task.getId()==null){
+            task.setId(UUID.randomUUID().getMostSignificantBits());
+        }
         return super.save(task.getId(),task);
     }
 
@@ -36,4 +51,6 @@ public class TaskServiceImpl extends AbstractMapService<TaskDTO,Long> implements
 
         super.update(task.getId(),task);
     }
+
+
 }
