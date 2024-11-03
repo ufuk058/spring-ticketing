@@ -1,6 +1,7 @@
 package com.ticketing.controller;
 
 import com.ticketing.dto.TaskDTO;
+import com.ticketing.enums.Status;
 import com.ticketing.service.ProjectService;
 import com.ticketing.service.TaskService;
 import com.ticketing.service.UserService;
@@ -72,5 +73,13 @@ public class TaskController {
 
         taskService.update(task);
         return "redirect:/task/create";
+    }
+
+
+    @GetMapping("employee/pending-tasks")
+    public String employeePendingTask(Model model){
+
+        model.addAttribute("tasks", taskService.findAllTasksByStatusIsNot(Status.OPEN));
+        return "task/pending-tasks";
     }
 }
