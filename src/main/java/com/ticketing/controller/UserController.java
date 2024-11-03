@@ -59,6 +59,6 @@ public class UserController {
     public String deleteUser(@PathVariable("username") String username){
 
         userService.deleteById(username);
-        return "redirect:/user/create";
+        return "redirect:/user/update";
     }
 }
