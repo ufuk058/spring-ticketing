@@ -9,5 +9,5 @@ public interface TaskService extends CRUDService<TaskDTO,Long> {
 
     List<TaskDTO> findAllTasksByStatusIsNot(Status status);
 
-    List<TaskDTO> findAllTasksByStatusIs(Status status);
+    List<TaskDTO> findAllTasksByStatus(Status status);
 }
