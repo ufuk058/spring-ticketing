@@ -63,4 +63,9 @@ public class TaskServiceImpl extends AbstractMapService<TaskDTO,Long> implements
         return findAll().stream().filter(task -> task.getTaskStatus()!= status).collect(Collectors.toUnmodifiableList());
 
     }
+
+    @Override
+    public List<TaskDTO> findAllTasksByStatusIs(Status status) {
+        return findAll().stream().filter(task -> task.getTaskStatus()==status).collect(Collectors.toUnmodifiableList());
+    }
 }

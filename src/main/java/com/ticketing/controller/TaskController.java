@@ -82,4 +82,11 @@ public class TaskController {
         model.addAttribute("tasks", taskService.findAllTasksByStatusIsNot(Status.OPEN));
         return "task/pending-tasks";
     }
+
+    @GetMapping("employee/archive")
+    public String archivedTasks(Model model){
+        model.addAttribute("tasks", taskService.findAllTasksByStatusIs(Status.COMPLETE));
+
+        return "task/archive";
+    }
 }

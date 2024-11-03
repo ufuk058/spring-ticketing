@@ -8,4 +8,6 @@ import java.util.List;
 public interface TaskService extends CRUDService<TaskDTO,Long> {
 
     List<TaskDTO> findAllTasksByStatusIsNot(Status status);
+
+    List<TaskDTO> findAllTasksByStatusIs(Status status);
 }
