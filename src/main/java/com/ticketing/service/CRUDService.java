@@ -1,5 +1,7 @@
 package com.ticketing.service;
 
+import com.ticketing.dto.UserDTO;
+
 import java.util.List;
 
 public interface CRUDService <T, ID>{
