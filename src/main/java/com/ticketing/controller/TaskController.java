@@ -79,7 +79,7 @@ public class TaskController {
     @GetMapping("employee/pending-tasks")
     public String employeePendingTask(Model model){
 
-        model.addAttribute("tasks", taskService.findAllTasksByStatusIsNot(Status.OPEN));
+        model.addAttribute("tasks", taskService.findAllTasksByStatusIsNot(Status.COMPLETE));
         return "task/pending-tasks";
     }
 
@@ -90,5 +90,21 @@ public class TaskController {
         return "task/archive";
     }
 
+    @GetMapping("employee/edit/{id}")
+    public String employeeEditTask(@PathVariable("id") Long id, Model model){
+
+        model.addAttribute("task",taskService.findById(id));
+        model.addAttribute("tasks", taskService.findAllTasksByStatusIsNot(Status.COMPLETE));
+        model.addAttribute("statuses",Status.values());
+
+        return "task/status-update";
+    }
+
+    @PostMapping("employee/update/{id}")
+    public String employeeUpdateTask(@ModelAttribute("task") TaskDTO task){
+
+        taskService.updateStatus(task);
+        return "redirect:/task/employee/pending-tasks";
+    }
 
 }
