@@ -38,6 +38,14 @@
                                                 <div class="form-group">
                                                     <label for="projectname" class="col-form-label">Project Name</label>
                                                     <input id="projectname" type="text" class="form-control" th:field="*{projectName}" placeholder="project name">
+                                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('projectName')}">
+                                                        <ul>
+                                                            <li th:each="err : ${#fields.errors('projectName')}" th:text="${err}">
+
+                                                            </li>
+                                                        </ul>
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -46,6 +54,13 @@
                                                 <div class="form-group">
                                                     <label for="projectcode" class="col-form-label">Project Code</label>
                                                     <input id="projectcode" type="text" class="form-control" th:field="*{projectCode}" placeholder="project code">
+                                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('projectCode')}">
+                                                        <ul>
+                                                            <li th:each="err : ${#fields.errors('projectCode')}" th:text="${err}">
+
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -58,6 +73,11 @@
                                                         <option th:each="manager : ${managers}" th:text="${manager.firstName+ ' ' + manager.lastName}"
                                                                 th:value="${manager.userName}"></option>
                                                     </select>
+                                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('assignedManager')}">
+                                                        <ul>
+                                                            <li th:each="err : ${#fields.errors('assignedManager')}" th:text="${err}"></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -66,12 +86,22 @@
                                                 <div class="form-group">
                                                     <label for="startdate">Project Start Date</label>
                                                     <input id="startdate" type="date" th:field="*{startDate}" class="form-control">
+                                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('startDate')}">
+                                                        <ul>
+                                                            <li th:each="err : ${#fields.errors('startDate')}" th:text="${err}"></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
                                                     <label for="enddate">Project End Date</label>
                                                     <input id="enddate" type="date" th:field="*{endDate}" class="form-control">
+                                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('endDate')}">
+                                                        <ul>
+                                                            <li th:each="err : ${#fields.errors('endDate')}" th:text="${err}"></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -80,6 +110,11 @@
                                                 <div class="form-group">
                                                     <label for="projectdetail">Project Detail</label>
                                                     <textarea id="projectdetail" class="form-control" th:field="*{projectDetail}" placeholder="project detail"></textarea>
+                                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('projectDetail')}">
+                                                        <ul>
+                                                            <li th:each="err : ${#fields.errors('projectDetail')}" th:text="${err}"></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

@@ -5,8 +5,10 @@ import com.ticketing.enums.Status;
 import com.ticketing.service.ProjectService;
 import com.ticketing.service.TaskService;
 import com.ticketing.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -34,8 +36,14 @@ public class TaskController {
    }
 
    @PostMapping("/create")
-    public String insertTask(@ModelAttribute("task") TaskDTO task){
+    public String insertTask(@Valid @ModelAttribute("task") TaskDTO task, BindingResult bindingResult, Model model){
 
+       if(bindingResult.hasErrors()){
+           model.addAttribute("employees",userService.findEmployees());
+           model.addAttribute("projects",projectService.findAll());
+           model.addAttribute("tasks",taskService.findAll());
+           return "/task/create";
+       }
         taskService.save(task);
 
         return "redirect:/task/create";

@@ -28,35 +28,30 @@ public class ProjectDTO {
         this.projectStatus = projectStatus;
     }
 
-//    @NotBlank
-//    @Size(max=100, min=2)
+    @NotBlank(message = "Project Name is a required field")
     private String projectName;
 
-//    @NotBlank
-//    @Size(max=20, min=2)
+    @NotBlank(message = "Project Code is a required field")
     private String projectCode;
 
+    @NotNull(message = "Please select a manager")
     private UserDTO assignedManager;
 
-//    @NotNull
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull(message="Please select a Start Date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;
 
-//    @NotNull
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull(message="Please select an End Date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
 
-//    @NotBlank
-//    @Size(max=100, min=2)
+    @NotBlank(message = "Project Detail is a required field")
+    @Size(min=2, max=500,message = "Detail should be at least 2 and max 500 characters long")
     private String projectDetail;
 
-//    @NotNull
+
     private Status projectStatus;
-
-//    @Pattern(regexp = "(?=.*\\d)")
     private int completeTaskCounts;
-
-//    @Pattern(regexp = "(?=.*\\d)")
     private int unfinishedTaskCounts;
 
 

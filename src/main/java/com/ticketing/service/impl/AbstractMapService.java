@@ -3,10 +3,12 @@ package com.ticketing.service.impl;
 import com.ticketing.service.RoleService;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public abstract class AbstractMapService <T, ID>  {
 
     public Map<ID,T> map= new LinkedHashMap<>(); //This is our database
+
 
     T save (ID id, T object){
         return map.put(id,object);
