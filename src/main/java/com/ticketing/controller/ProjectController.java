@@ -5,8 +5,10 @@ import com.ticketing.dto.UserDTO;
 import com.ticketing.enums.Status;
 import com.ticketing.service.ProjectService;
 import com.ticketing.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -31,8 +33,14 @@ public class ProjectController {
     }
 
     @PostMapping("/create")
-    public String insertProject(@ModelAttribute("project") ProjectDTO project){
+    public String insertProject(@Valid @ModelAttribute("project") ProjectDTO project,
+                                BindingResult bindingResult,Model model){
 
+        if(bindingResult.hasErrors()){
+            model.addAttribute("projects",projectService.findAll());
+            model.addAttribute("managers", userService.findManagers());
+            return "/project/create";
+        }
         projectService.save(project);
         return "redirect:/project/create";
     }
