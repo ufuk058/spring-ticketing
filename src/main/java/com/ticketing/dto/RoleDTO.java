@@ -13,11 +13,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RoleDTO {
 
-    @NotNull
-    @Pattern(regexp = "(?=.*\\d)")
     private Long id;
-
-    @NotBlank
-    @Size(max=500,min=2)
     private String description;
 }
