@@ -43,20 +43,20 @@ public class DataGenerator implements CommandLineRunner {
 
 
 
-        UserDTO user1=new UserDTO("John","Kessy","john@gmail.com","07435983719","Abc1", Gender.MALE, managerRole);
-        UserDTO user2=new UserDTO("Mike","Smith","mike@gmail.com","07435983239","Abc2", Gender.MALE, adminRole);
-        UserDTO user3=new UserDTO("Delisa","Norre","delisa@gmail.com","07432345719","Abc3", Gender.FEMALE, managerRole);
-        UserDTO user4=new UserDTO("Craig","Jark","craig@gmail.com","07485983719","Abc4", Gender.MALE, employeeRole);
-        UserDTO user5=new UserDTO("Shaun","Hayns","shaun@gmail.com","07435983245","Abc5", Gender.MALE, managerRole);
-        UserDTO user6=new UserDTO("Elizabeth","Loren","elizabeth@gmail.com","0743527364","Abc6", Gender.FEMALE, employeeRole);
-        UserDTO user7=new UserDTO("Maria","Ada","maria@gmail.com","07435934567","Abc7", Gender.FEMALE, employeeRole);
-        UserDTO user8=new UserDTO("Bill","Matt","bill@gmail.com","07435483736","Abc8", Gender.MALE, employeeRole);
-        UserDTO user9= new UserDTO("Kerem","Sahin","kerem@gmail.com","07385677875","Abc9",Gender.MALE,managerRole);
-        UserDTO user10= new UserDTO("Ufuk","Arpaci","ufuk@gmail.com","07385999999","Abc10",Gender.MALE,employeeRole);
+        UserDTO user1=new UserDTO("John","Kessy","john@gmail.com","07435983719","Abc1","Abc1", Gender.MALE, managerRole);
+        UserDTO user2=new UserDTO("Mike","Smith","mike@gmail.com","07435983239","Abc2","Abc1", Gender.MALE, adminRole);
+        UserDTO user3=new UserDTO("Delisa","Norre","delisa@gmail.com","07432345719","Abc3","Abc1", Gender.FEMALE, managerRole);
+        UserDTO user4=new UserDTO("Craig","Jark","craig@gmail.com","07485983719","Abc4","Abc1", Gender.MALE, employeeRole);
+        UserDTO user5=new UserDTO("Shaun","Hayns","shaun@gmail.com","07435983245","Abc5","Abc1", Gender.MALE, managerRole);
+        UserDTO user6=new UserDTO("Elizabeth","Loren","elizabeth@gmail.com","0743527364","Abc6","Abc1", Gender.FEMALE, employeeRole);
+        UserDTO user7=new UserDTO("Maria","Ada","maria@gmail.com","07435934567","Abc7","Abc1", Gender.FEMALE, employeeRole);
+        UserDTO user8=new UserDTO("Bill","Matt","bill@gmail.com","07435483736","Abc8","Abc1", Gender.MALE, employeeRole);
+        UserDTO user9= new UserDTO("Kerem","Sahin","kerem@gmail.com","07385677875","Abc9","Abc1",Gender.MALE,managerRole);
+        UserDTO user10= new UserDTO("Ufuk","Arpaci","ufuk@gmail.com","07385999999","Abc10","Abc1",Gender.MALE,employeeRole);
         userService.save(user1); userService.save(user2); userService.save(user3); userService.save(user4);userService.save(user5);
         userService.save(user6);userService.save(user7); userService.save(user8);userService.save(user9); userService.save(user10);
 
-        createRandomUsers(10);
+        //createRandomUsers(10);
 
 
         ProjectDTO project1=new ProjectDTO("Spring MVC","PR001",user1, LocalDate.now(),LocalDate.now().plusDays(25),"Creating Controllers", Status.OPEN);
@@ -93,7 +93,7 @@ public class DataGenerator implements CommandLineRunner {
             gender=genders.get(random.nextInt(genders.size()));
             role=roles.get(random.nextInt(roles.size()));
 
-            UserDTO user= new UserDTO(firstName,lastName,userName,phone,passWord,gender,role);
+            UserDTO user= new UserDTO(firstName,lastName,userName,phone,passWord,passWord,gender,role);
             userService.save(user);
 
         }

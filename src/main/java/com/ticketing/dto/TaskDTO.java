@@ -17,28 +17,28 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class TaskDTO {
 
-    @NotNull
-    @Pattern(regexp = "(?=.*\\d)")
+//    @NotNull
+//    @Pattern(regexp = "(?=.*\\d)")
     private Long id;
 
-    @NotNull
+//    @NotNull
     private ProjectDTO project;
-    @NotNull
+//    @NotNull
     private UserDTO assignedEmployee;
 
-    @NotBlank
-    @Size(max=50,min=2)
+//    @NotBlank
+//    @Size(max=50,min=2)
     private String taskSubject;
 
-    @NotBlank
-    @Size(max=500, min=2)
+//    @NotBlank
+//    @Size(max=500, min=2)
     private String taskDetail;
 
-    @NotNull
-    @DateTimeFormat(pattern ="yyyy-MM-dd")
+//    @NotNull
+//    @DateTimeFormat(pattern ="yyyy-MM-dd")
     private LocalDate assignedDate;
 
-    @NotNull
+//    @NotNull
     private Status taskStatus;
 
 }
